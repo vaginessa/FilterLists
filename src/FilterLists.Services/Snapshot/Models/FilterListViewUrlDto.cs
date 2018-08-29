@@ -5,7 +5,7 @@ namespace FilterLists.Services.Snapshot.Models
     [UsedImplicitly]
     public class FilterListViewUrlDto
     {
-        public uint Id { get; set; }
+        public int Id { get; set; }
         public string ViewUrl { get; set; }
     }
 }

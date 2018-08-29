@@ -6,7 +6,7 @@ namespace FilterLists.Data.Entities
     public class Rule : BaseEntity
     {
         public string Raw { get; set; }
-        public uint? RuleSyntaxId { get; set; }
+        public int? RuleSyntaxId { get; set; }
         public RuleSyntax RuleSyntax { get; set; }
         public ICollection<SnapshotRule> SnapshotRules { get; set; }
     }
