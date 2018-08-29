@@ -13,36 +13,36 @@ namespace FilterLists.Data.Seed.Extensions
                             new
                             {
                                 Id = (uint)1,
-                                CreatedDateUtc = DateTime.Now,
-                                ModifiedDateUtc = DateTime.Now,
+                                CreatedDateUtc = (DateTime?)null,
+                                ModifiedDateUtc = (DateTime?)null,
                                 Name = "Comment"
                             },
                             new
                             {
                                 Id = (uint)2,
-                                CreatedDateUtc = DateTime.Now,
-                                ModifiedDateUtc = DateTime.Now,
+                                CreatedDateUtc = (DateTime?)null,
+                                ModifiedDateUtc = (DateTime?)null,
                                 Name = "Title"
                             },
                             new
                             {
                                 Id = (uint)3,
-                                CreatedDateUtc = DateTime.Now,
-                                ModifiedDateUtc = DateTime.Now,
+                                CreatedDateUtc = (DateTime?)null,
+                                ModifiedDateUtc = (DateTime?)null,
                                 Name = "Expires"
                             },
                             new
                             {
                                 Id = (uint)4,
-                                CreatedDateUtc = DateTime.Now,
-                                ModifiedDateUtc = DateTime.Now,
+                                CreatedDateUtc = (DateTime?)null,
+                                ModifiedDateUtc = (DateTime?)null,
                                 Name = "Platform Hint"
                             },
                             new
                             {
                                 Id = (uint)5,
-                                CreatedDateUtc = DateTime.Now,
-                                ModifiedDateUtc = DateTime.Now,
+                                CreatedDateUtc = (DateTime?)null,
+                                ModifiedDateUtc = (DateTime?)null,
                                 Name = "Pre-processor Directive"
                             });
         }
