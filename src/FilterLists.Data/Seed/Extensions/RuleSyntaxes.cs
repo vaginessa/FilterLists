@@ -12,35 +12,35 @@ namespace FilterLists.Data.Seed.Extensions
                         .HasData(
                             new
                             {
-                                Id = 1,
+                                Id = (uint)1,
                                 CreatedDateUtc = DateTime.Now,
                                 ModifiedDateUtc = DateTime.Now,
                                 Name = "Comment"
                             },
                             new
                             {
-                                Id = 2,
+                                Id = (uint)2,
                                 CreatedDateUtc = DateTime.Now,
                                 ModifiedDateUtc = DateTime.Now,
                                 Name = "Title"
                             },
                             new
                             {
-                                Id = 3,
+                                Id = (uint)3,
                                 CreatedDateUtc = DateTime.Now,
                                 ModifiedDateUtc = DateTime.Now,
                                 Name = "Expires"
                             },
                             new
                             {
-                                Id = 4,
+                                Id = (uint)4,
                                 CreatedDateUtc = DateTime.Now,
                                 ModifiedDateUtc = DateTime.Now,
                                 Name = "Platform Hint"
                             },
                             new
                             {
-                                Id = 5,
+                                Id = (uint)5,
                                 CreatedDateUtc = DateTime.Now,
                                 ModifiedDateUtc = DateTime.Now,
                                 Name = "Pre-processor Directive"
