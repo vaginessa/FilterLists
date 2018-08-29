@@ -1,5 +1,4 @@
-﻿using System;
-using FilterLists.Data.Entities;
+﻿using FilterLists.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FilterLists.Data.Seed.Extensions
@@ -10,23 +9,23 @@ namespace FilterLists.Data.Seed.Extensions
         {
             new RuleSyntax
             {
-                Id = 1, CreatedDateUtc = DateTime.Now, ModifiedDateUtc = DateTime.Now, Name = "Comment"
+                Id = 1, CreatedDateUtc = null, ModifiedDateUtc = null, Name = "Comment"
             },
             new RuleSyntax
             {
-                Id = 2, CreatedDateUtc = DateTime.Now, ModifiedDateUtc = DateTime.Now, Name = "Title"
+                Id = 2, CreatedDateUtc = null, ModifiedDateUtc = null, Name = "Title"
             },
             new RuleSyntax
             {
-                Id = 3, CreatedDateUtc = DateTime.Now, ModifiedDateUtc = DateTime.Now, Name = "Expires"
+                Id = 3, CreatedDateUtc = null, ModifiedDateUtc = null, Name = "Expires"
             },
             new RuleSyntax
             {
-                Id = 4, CreatedDateUtc = DateTime.Now, ModifiedDateUtc = DateTime.Now, Name = "Platform Hint"
+                Id = 4, CreatedDateUtc = null, ModifiedDateUtc = null, Name = "Platform Hint"
             },
             new RuleSyntax
             {
-                Id = 5, CreatedDateUtc = DateTime.Now, ModifiedDateUtc = DateTime.Now, Name = "Pre-processor Directive"
+                Id = 5, CreatedDateUtc = null, ModifiedDateUtc = null, Name = "Pre-processor Directive"
             }
         };
 
