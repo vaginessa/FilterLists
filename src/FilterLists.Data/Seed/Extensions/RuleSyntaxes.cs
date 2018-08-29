@@ -1,5 +1,4 @@
-﻿using System;
-using FilterLists.Data.Entities;
+﻿using FilterLists.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FilterLists.Data.Seed.Extensions
@@ -10,39 +9,39 @@ namespace FilterLists.Data.Seed.Extensions
         {
             modelBuilder.Entity<RuleSyntax>()
                         .HasData(
-                            new
+                            new RuleSyntax
                             {
-                                Id = (uint)1,
-                                CreatedDateUtc = (DateTime?)null,
-                                ModifiedDateUtc = (DateTime?)null,
+                                Id = 1,
+                                CreatedDateUtc = null,
+                                ModifiedDateUtc = null,
                                 Name = "Comment"
                             },
-                            new
+                            new RuleSyntax
                             {
-                                Id = (uint)2,
-                                CreatedDateUtc = (DateTime?)null,
-                                ModifiedDateUtc = (DateTime?)null,
+                                Id = 2,
+                                CreatedDateUtc = null,
+                                ModifiedDateUtc = null,
                                 Name = "Title"
                             },
-                            new
+                            new RuleSyntax
                             {
-                                Id = (uint)3,
-                                CreatedDateUtc = (DateTime?)null,
-                                ModifiedDateUtc = (DateTime?)null,
+                                Id = 3,
+                                CreatedDateUtc = null,
+                                ModifiedDateUtc = null,
                                 Name = "Expires"
                             },
-                            new
+                            new RuleSyntax
                             {
-                                Id = (uint)4,
-                                CreatedDateUtc = (DateTime?)null,
-                                ModifiedDateUtc = (DateTime?)null,
+                                Id = 4,
+                                CreatedDateUtc = null,
+                                ModifiedDateUtc = null,
                                 Name = "Platform Hint"
                             },
-                            new
+                            new RuleSyntax
                             {
-                                Id = (uint)5,
-                                CreatedDateUtc = (DateTime?)null,
-                                ModifiedDateUtc = (DateTime?)null,
+                                Id = 5,
+                                CreatedDateUtc = null,
+                                ModifiedDateUtc = null,
                                 Name = "Pre-processor Directive"
                             });
         }
