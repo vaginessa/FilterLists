@@ -2,6 +2,7 @@
 using FilterLists.Data.Entities.Junctions;
 using FilterLists.Data.EntityTypeConfigurations;
 using FilterLists.Data.EntityTypeConfigurations.Junctions;
+using FilterLists.Data.Seed.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace FilterLists.Data
@@ -17,6 +18,7 @@ namespace FilterLists.Data
         public DbSet<License> Licenses { get; set; }
         public DbSet<Maintainer> Maintainers { get; set; }
         public DbSet<Rule> Rules { get; set; }
+        public DbSet<RuleSyntax> RuleSyntaxes { get; set; }
         public DbSet<Snapshot> Snapshots { get; set; }
         public DbSet<Software> Software { get; set; }
         public DbSet<Syntax> Syntaxes { get; set; }
@@ -34,6 +36,7 @@ namespace FilterLists.Data
         {
             base.OnModelCreating(modelBuilder);
             ApplyConfigurations(modelBuilder);
+            Seed(modelBuilder);
         }
 
         private static void ApplyConfigurations(ModelBuilder modelBuilder)
@@ -43,6 +46,7 @@ namespace FilterLists.Data
             modelBuilder.ApplyConfiguration(new LicenseTypeConfiguration());
             modelBuilder.ApplyConfiguration(new MaintainerTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RuleTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new RuleSyntaxTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SnapshotTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SoftwareTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SyntaxTypeConfiguration());
@@ -55,6 +59,11 @@ namespace FilterLists.Data
             modelBuilder.ApplyConfiguration(new MergeTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SnapshotRuleTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SoftwareSyntaxTypeConfiguration());
+        }
+
+        private static void Seed(ModelBuilder modelBuilder)
+        {
+            modelBuilder.SeedRuleSyntaxes();
         }
     }
 }
