@@ -380,73 +380,9 @@ namespace FilterLists.Api.Migrations
                  .IsRequired()
                  .HasColumnType("LONGTEXT");
 
-                b.Property<byte?>("RuleSyntaxId");
-
                 b.HasKey("Id");
-
-                b.HasIndex("RuleSyntaxId");
 
                 b.ToTable("rules");
-            });
-
-            modelBuilder.Entity("FilterLists.Data.Entities.RuleSyntax", b =>
-            {
-                b.Property<byte>("Id")
-                 .ValueGeneratedOnAdd()
-                 .HasColumnType("TINYINT UNSIGNED")
-                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn);
-
-                b.Property<DateTime?>("CreatedDateUtc")
-                 .IsRequired()
-                 .ValueGeneratedOnAdd()
-                 .HasColumnType("TIMESTAMP")
-                 .HasDefaultValueSql("current_timestamp()");
-
-                b.Property<DateTime?>("ModifiedDateUtc")
-                 .IsRequired()
-                 .ValueGeneratedOnAddOrUpdate()
-                 .HasColumnType("TIMESTAMP")
-                 .HasDefaultValueSql("current_timestamp() ON UPDATE current_timestamp()");
-
-                b.Property<string>("Name")
-                 .IsRequired()
-                 .HasColumnType("VARCHAR(126)");
-
-                b.HasKey("Id");
-
-                b.ToTable("rule_syntaxes");
-
-                b.HasData(
-                    new
-                    {
-                        Id = (byte)1, CreatedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 88, DateTimeKind.Local),
-                        ModifiedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 93, DateTimeKind.Local),
-                        Name = "Comment"
-                    },
-                    new
-                    {
-                        Id = (byte)2, CreatedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        ModifiedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local), Name = "Title"
-                    },
-                    new
-                    {
-                        Id = (byte)3, CreatedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        ModifiedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        Name = "Expires"
-                    },
-                    new
-                    {
-                        Id = (byte)4, CreatedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        ModifiedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        Name = "Platform Hint"
-                    },
-                    new
-                    {
-                        Id = (byte)5, CreatedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        ModifiedDateUtc = new DateTime(2018, 8, 29, 12, 52, 38, 94, DateTimeKind.Local),
-                        Name = "Pre-processor Directive"
-                    }
-                );
             });
 
             modelBuilder.Entity("FilterLists.Data.Entities.Snapshot", b =>
@@ -687,13 +623,6 @@ namespace FilterLists.Api.Migrations
                  .WithMany("SoftwareSyntaxes")
                  .HasForeignKey("SyntaxId")
                  .OnDelete(DeleteBehavior.Cascade);
-            });
-
-            modelBuilder.Entity("FilterLists.Data.Entities.Rule", b =>
-            {
-                b.HasOne("FilterLists.Data.Entities.RuleSyntax", "RuleSyntax")
-                 .WithMany("Rules")
-                 .HasForeignKey("RuleSyntaxId");
             });
 
             modelBuilder.Entity("FilterLists.Data.Entities.Snapshot", b =>
