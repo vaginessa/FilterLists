@@ -35,6 +35,7 @@ namespace FilterLists.Data
         {
             base.OnModelCreating(modelBuilder);
             ApplyConfigurations(modelBuilder);
+            modelBuilder.Entity<Language>().HasIndex(u => u.Iso6391).IsUnique();
         }
 
         private static void ApplyConfigurations(ModelBuilder modelBuilder)
