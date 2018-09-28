@@ -1,11 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
 const bundleOutputDir = "./wwwroot/dist";
 
-module.exports = (env) => {
-    const isDevBuild = !(env && env.prod);
+module.exports = () => {
     return [
         {
             stats: { modules: false },
@@ -21,9 +20,17 @@ module.exports = (env) => {
                     { test: /\.tsx?$/, include: /ClientApp/, use: "awesome-typescript-loader?silent=true" },
                     {
                         test: /\.css$/,
-                        use: isDevBuild
-                            ? ["style-loader", "css-loader"]
-                            : ExtractTextPlugin.extract({ use: "css-loader?minimize" })
+                        use: [
+                            { loader: MiniCssExtractPlugin.loader },
+                            {
+                                loader: "css-loader?minimize",
+                                options: {
+                                    sourceMap: true,
+                                    modules: true,
+                                    localIdentName: "[local]___[hash:base64:5]"
+                                }
+                            }
+                        ]
                     },
                     { test: /\.(png|jpg|jpeg|gif|svg)$/, use: "url-loader?limit=25000" }
                 ]
@@ -33,22 +40,9 @@ module.exports = (env) => {
                 new webpack.DllReferencePlugin({
                     context: __dirname,
                     manifest: require("./wwwroot/dist/vendor-manifest.json")
-                })
-            ].concat(isDevBuild
-                ? [
-                    // Plugins that apply in development builds only
-                    new webpack.SourceMapDevToolPlugin({
-                        filename: "[file].map", // Remove this line if you prefer inline source maps
-                        moduleFilenameTemplate:
-                            path.relative(bundleOutputDir,
-                                "[resourcePath]") // Point sourcemap entries to the original file locations on disk
-                    })
-                ]
-                : [
-                    // Plugins that apply in production builds only
-                    new webpack.optimize.UglifyJsPlugin(),
-                    new ExtractTextPlugin("site.css")
-                ])
+                }),
+                new MiniCssExtractPlugin({ filename: "site.css" })
+            ]
         }
     ];
 };

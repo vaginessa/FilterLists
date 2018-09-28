@@ -1,10 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = (env) => {
-    const extractCss = new ExtractTextPlugin("vendor.css");
-    const isDevBuild = !(env && env.prod);
+module.exports = () => {
     return [
         {
             stats: { modules: false },
@@ -16,7 +14,17 @@ module.exports = (env) => {
                     { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: "url-loader?limit=100000" },
                     {
                         test: /\.css(\?|$)/,
-                        use: extractCss.extract([isDevBuild ? "css-loader" : "css-loader?minimize"])
+                        use: [
+                            { loader: MiniCssExtractPlugin.loader },
+                            {
+                                loader: "css-loader?minimize",
+                                options: {
+                                    sourceMap: true,
+                                    modules: true,
+                                    localIdentName: "[local]___[hash:base64:5]"
+                                }
+                            }
+                        ]
                     }
                 ]
             },
@@ -33,23 +41,19 @@ module.exports = (env) => {
                 library: "[name]_[hash]"
             },
             plugins: [
-                extractCss,
+                new MiniCssExtractPlugin({ filename: "vendor.css" }),
                 new webpack.ProvidePlugin({
                     $: "jquery",
                     jQuery: "jquery"
-                }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
+                }),
                 new webpack.DllPlugin({
                     path: path.join(__dirname, "wwwroot", "dist", "[name]-manifest.json"),
                     name: "[name]_[hash]"
                 }),
                 new webpack.DefinePlugin({
-                    'process.env.NODE_ENV': isDevBuild ? '"development"' : '"production"'
+                    'process.env.NODE_ENV': '"production"'
                 })
-            ].concat(isDevBuild
-                ? []
-                : [
-                    new webpack.optimize.UglifyJsPlugin()
-                ])
+            ]
         }
     ];
 };
